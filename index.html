@@ -214,6 +214,7 @@
 
                 var layer = e.target;
                 var propsTable = '';
+                var isReachability = isIsolineLayer(layer);
 
                 // reset the style of a previously selected feature
                 resetFeatureStyle();
@@ -234,23 +235,23 @@
 
                     // Does the polygon layer belong to either a dataset or boundary geography? If so we want to bring that layer to the front
                     // It's really important that we don't do this for isolines otherwise the user couldn't select intervals
-                    if (isIsolineLayer(layer) == false) layer.bringToFront();
+                    if (isReachability == false) layer.bringToFront();
                 }
 
                 // build the content for the properties table to be displayed
                 if (layer.feature.hasOwnProperty('properties')) {
                     var props = layer.feature.properties;
-                    var propVal, prefix;
+                    var propsVal, prefix;
                     var matchIndex = 0;
                     var arrEmail = [];
 
                     for (var key in props) {
-                        // Ensure that the key is a valid property of the GeoJson object and isn't one of the styling options
-                        if (props.hasOwnProperty(key) && key != 'stroke' && key != 'stroke-width' && key != 'stroke-opacity' && key != 'fill' && key != 'fill-opacity' && key != 'marker-color' && key != 'marker-size') {
+                        // Ensure that the key is a valid property of the GeoJson object and isn't one of the styling options or a reachability range/area units or measure attribute (because we deal with these later)
+                        if (props.hasOwnProperty(key) && key != 'stroke' && key != 'stroke-width' && key != 'stroke-opacity' && key != 'fill' && key != 'fill-opacity' && key != 'marker-color' && key != 'marker-size' && !(isReachability && (key.indexOf('units') > -1 || key == 'Measure'))) {
                             if (props[key] === null || props[key] === undefined || props[key] !== props[key]) {     // The strange test of the property value not equalling itself is for NaN as NaN, uniquely, is never equal to itself
                                 propsVal = '';
                             }
-                            else if (isNaN(props[key])) {   // Given that we have screened out the possibility of props[key] being NaN, this test is to check if props[key] is numeric or not. If it is numeric we don't want to perfom regex on it
+                            else if (isNaN(props[key])) {   // Given that we have screened out the possibility of props[key] being NaN, this test is to check if props[key] is numeric or not. If it's not just numeric we might want to perform some processing on it to enhance the presentation.
                                 /*
                                     To enhance usability turn email or web addresses found within the property value into hyperlinks. Works for single or multiple occurrences
 
@@ -279,15 +280,36 @@
                                 }
                             }
                             else {
-                                // Value seems to be a number so just display it
-                                propsVal = props[key];
+                                // Value seems to be a number
+                                propsVal = props[key];  // set to the raw value initially
+
+                                // The following are only applicable if the selected object is a reachability polygon
+                                if (isReachability) {
+                                    switch (key) {
+                                        case 'Range':
+                                            propsVal = '0 - ' + props['Range'] + ' ' + props['Range units'];                        // Improves the presentation of the range information
+                                            break;
+
+                                        case 'Area':
+                                            propsVal = props['Area'] + ' ' + props['Area units'].replace('^2', '<sup>2</sup>');     // Improves the presentation of the area information
+                                            break;
+
+                                        case 'Latitude':
+                                        case 'Longitude':
+                                            propsVal = props[key].toFixed(4);                                                       // Reduce the precision of the lat/lng values to a sensible number
+                                            break
+
+                                        case 'Population':
+                                            propsVal = props[key].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");                 // Format the population number with commas separating thousands
+                                    }
+                                }
                             }
 
-                            propsTable += '<tr><td>' + formatPropertyKey(key) + '</td><td>' + propsVal + '</td></tr>';
+                            propsTable += '<tr><td>' + formatPropertyKey(key) + '</td><td>' + propsVal + '</td></tr>';          // Create a row for the property table to display the key and value
                         }
                     }
 
-                    if (propsTable != '') labMap.updateInfo('<table class="propertiesTable">' + propsTable + '</table>');
+                    if (propsTable != '') labMap.updateInfo('<table class="propertiesTable">' + propsTable + '</table>');       // So long as we have something to display, show the completed property table
                 }
             }
 
@@ -512,7 +534,8 @@
                 // Common options are taken care of in the function, however the options below are extra
                 styleFn: labStyleIsolines,
                 clickFn: showLayerProps,
-                pane: 'pane_geography_overlay'
+                pane: 'pane_geography_overlay',
+                attributes: '"area","total_pop"'
             });
             labMap.reachabilityControl.addTo(labMap.map);
 
