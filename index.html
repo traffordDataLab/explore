@@ -90,6 +90,11 @@
         <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/leaflet.reachability@v2.0.0/leaflet.reachability.min.js"></script>
 
         <script>
+            // 2019-07-11: For compatibility with URLs containing a QueryString to specify a dataset, (e.g. https://www.trafforddatalab.io/explore/?dataset=libraries) the following replaces it for a hash causing the page to reload.
+            // In most circumstances this should go unnoticed. The new method uses hashes to record map state as this allows the url to be updated without reloading the page.
+            if (location.href.indexOf('?') > -1) location.href = location.href.replace('?', '#');
+
+
             // ######### FUNCTIONS #########
             // To setup each feature within GeoJSON
             function featureEvents (feature, layer) {
@@ -365,7 +370,7 @@
                                     if (labMap.objDatasets[datasetKey].attribution !== null) labMap.attribution.addAttribution('Data source: ' + labMap.objDatasets[datasetKey].attribution);
 
                                     // do we want clustering on or off?
-                                    var clusterQS = labGetQryStrValByKey('cluster');
+                                    var clusterQS = labGetQryStrValByKey('cluster', location.hash);
 
                                     if (clusterQS === 'true' || (clusterQS !== 'false' && labMap.objDatasets[datasetKey].hasOwnProperty('cluster') && labMap.objDatasets[datasetKey].cluster === true)) {
                                         labMap.datasetLayer = labMap.datasetCluster;    // the layer we are going to add to the map is the clustered version
@@ -387,6 +392,9 @@
 
                                 // add legend content if applicable
                                 if (labMap.objDatasets[datasetKey].hasOwnProperty('legend') && labMap.objDatasets[datasetKey].legend != null && labMap.objDatasets[datasetKey].legend !== '') labMap.updateLegend(labMap.objDatasets[datasetKey].legend);
+
+                                // update the URL with the dataset selected
+                                updateMapStateUrl('dataset', datasetKey);
                             }
                             catch (e) {
                                 labError(new LabException("Error attempting to create GeoJSON Leaflet layer: " + e.message));
@@ -484,6 +492,48 @@
                 labMap.baseLayers.Road = labCreateTileLayer('OpenStreetMap.Mapnik');
                 labMap.baseLayers.Road.addTo(labMap.map);
                 labMap.updateLayerControl();
+            }
+
+            // Updates the hash component of the URL with dataset, zoom and latlng coordinates key/value pairs in order to allow users to share the current state of the map
+            function updateMapStateUrl(key, value) {
+                var zoom, latlng, dataset;
+
+                zoom = (key == 'zoom') ? value : getZoomHash();
+                latlng = (key == 'latlng') ? value : getLatLngHash();
+                dataset = (key == 'dataset') ? value : getDatasetHash();
+
+                var newHash = '';
+                if (zoom != null) newHash = 'zoom=' + zoom;
+
+                if (latlng != null) {
+                    if (newHash != '') newHash += '&';
+                    newHash += 'latlng=' + latlng;
+                }
+
+                if (dataset != null) {
+                    if (newHash != '') newHash += '&';
+                    newHash += 'dataset=' + dataset;
+                }
+
+                location.hash = newHash;
+            }
+
+            // Obtains the value of the zoom passed via the URL hash
+            function getZoomHash() {
+                var zoom = parseFloat(labGetQryStrValByKey('zoom', location.hash));
+
+                // Zoom value must be a number between the minimum and maximum defined when the labMap object is initialised
+                return (isNaN(zoom) == false && zoom >= labMap.attributes.minZoom && zoom <= labMap.attributes.maxZoom) ? zoom : null;
+            }
+
+            // Obtains the value of the latlng passed via the URL hash
+            function getLatLngHash() {
+                return labGetQryStrValByKey('latlng', location.hash);
+            }
+
+            // Obtains the value of the dataset passed via the URL hash
+            function getDatasetHash() {
+                return labGetQryStrValByKey('dataset', location.hash);
             }
 
 
@@ -589,6 +639,19 @@
                 }
             });
 
+            labMap.map.on('zoomend', function (e) {
+                // Update the URL with the new zoom level
+                updateMapStateUrl('zoom', labMap.map.getZoom());
+            });
+
+            labMap.map.on('moveend', function (e) {
+                // Get the new centre coordinate of the map
+                var mapCentre = labMap.map.getCenter();
+
+                // Update the URL with the new latlng
+                updateMapStateUrl('latlng', encodeURIComponent(mapCentre.lat + ' ' + mapCentre.lng));
+            });
+
 
             // ######### DATASET METADATA & SELECTION UI  #########
             labAjax('datasets.json', function (data) {
@@ -633,8 +696,8 @@
                     return 0;
                 });
 
-                // Check the URL for a dataset key in the Query String
-                var datasetQS = labGetQryStrValByKey('dataset');
+                // Check the URL for a dataset key in the URL
+                var datasetQS = getDatasetHash();
 
                 // Create the select element to choose the labMap.objDatasets
                 var datasetSelect = '<select name="frmDatasetList" onChange="loadDatasetLayer(this.value)" class="datasetSelect"><option value="" selected="selected">Select a dataset to visualise...</option>';
@@ -674,7 +737,29 @@
             // Add the Trafford boundary
             labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2016/trafford_local_authority_full_resolution.geojson', function (data) {
                 labMap.objGeographies['LA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents }).addTo(labMap.map);
-                labMap.map.fitBounds(labMap.objGeographies['LA'].getBounds()); // adjust the zoom to fit the boundary to the screen size
+
+                try {
+                    // We need to see if we have a zoom and latlng provided in the URL - if so we need to go to that point on the map, otherwise fit to the boundary of Trafford
+                    var zoom = getZoomHash();
+                    var latlng = getLatLngHash();
+
+                    if (zoom == null && latlng == null) {
+                        labMap.map.fitBounds(labMap.objGeographies['LA'].getBounds()); // adjust the zoom to fit the boundary to the screen size
+                    }
+                    else if (zoom != null && latlng != null) {
+                        labMap.map.setView(L.latLng(latlng.split(' ')), zoom);  // zoom and move the map to the values provided in the URL hash
+                    }
+                    else if (zoom != null) {
+                        labMap.map.setZoom(zoom);                         // zoom in to the value provided in the URL hash
+                    }
+                    else {
+                        labMap.map.panTo(L.latLng(latlng.split(' ')));    // move the map to the latlng provided in the URL hash
+                    }
+                }
+                catch (e) {
+                    // There's been a problem with the zoom or latlng values in the URL hash so just fit to bounds of Trafford
+                    labMap.map.fitBounds(labMap.objGeographies['LA'].getBounds()); // adjust the zoom to fit the boundary to the screen size
+                }
 
                 labMap.overlayLayers['1. Local authority'] = labMap.objGeographies['LA'];
                 labMap.updateLayerControl();
