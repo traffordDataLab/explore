@@ -14,4 +14,16 @@
 
 The datasets available to the application are described within the [JSON](https://www.json.org/) meta file [datasets.json](https://github.com/traffordDataLab/explore/blob/master/datasets.json) and stored within our [open_data](https://github.com/traffordDataLab/open_data) repository.
 
-To display a particular dataset when the application loads, add `?dataset=` followed by the dataset key from the meta file to the URL. For example, [https://www.trafforddatalab.io/explore/?dataset=green_spaces](https://www.trafforddatalab.io/explore/?dataset=green_spaces) will display the green spaces dataset from Ordnance Survey.
+### URL parameters
+
+Explore uses 4 URL hash parameters to allow sharing of the map state:
+- cluster
+- dataset
+- latlng
+- zoom
+
+To display a particular dataset when the application loads, add `#dataset=` followed by the dataset key from the meta file to the URL. For example, [https://www.trafforddatalab.io/explore/#dataset=green_spaces](https://www.trafforddatalab.io/explore/#dataset=green_spaces) will display the green spaces dataset from Ordnance Survey. For point datasets, you can control whether the data should be clustered or not using by adding `&cluster=true|false` e.g. [https://www.trafforddatalab.io/explore/#dataset=cctv&cluster=false](https://www.trafforddatalab.io/explore/#dataset=cctv&cluster=false).
+
+You can also go to a particular position and zoom level on a map by using the `latlng` and `zoom` parameters as demonstrated by the following link: [https://www.trafforddatalab.io/explore/#zoom=18&latlng=53.42181530009491%20-2.3303031000000156](https://www.trafforddatalab.io/explore/#zoom=18&latlng=53.42181530009491%20-2.3303031000000156).
+
+These parameters are automatically updated as you interact with the map, so you can simply copy the URL to share and/or bookmark the map state.
