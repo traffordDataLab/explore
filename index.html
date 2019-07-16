@@ -385,6 +385,7 @@
                                 }
                                 else {
                                     labMap.datasetLayer = labMap.datasetGeoJson;    // the layer we are going to add to the map is the straight GeoJSON we loaded
+                                    updateMapStateUrl('cluster', null);             // ensure there is no cluster key in the URL hash
                                 }
 
                                 // add the dataset layer to the map
@@ -411,6 +412,8 @@
                     // No dataset found so reset the map to the initial state
                     document.title = 'Trafford Data Lab: ' + labMap.title
                     labMap.updateAbout(labMap.about);
+                    updateMapStateUrl('dataset', null);     // remove the dataset key from the URL hash
+                    updateMapStateUrl('cluster', null);     // remove the cluster key from the URL hash
                 }
             }
 
@@ -420,9 +423,11 @@
 
                 if (document.getElementById('toggleClustering').checked) {
                     labMap.datasetLayer = labMap.datasetCluster;    // the layer we are going to add to the map is the clustered version
+                    updateMapStateUrl('cluster', 'true');
                 }
                 else {
                     labMap.datasetLayer = labMap.datasetGeoJson;    // the layer we are going to add to the map is the straight GeoJSON we loaded
+                    updateMapStateUrl('cluster', 'false');          // update the URL hash to reflect that the user has specifically removed the clustering
                 }
 
                 labMap.datasetLayer.addTo(labMap.map);
@@ -496,11 +501,12 @@
 
             // Updates the hash component of the URL with dataset, zoom and latlng coordinates key/value pairs in order to allow users to share the current state of the map
             function updateMapStateUrl(key, value) {
-                var zoom, latlng, dataset;
+                var zoom, latlng, dataset, cluster;
 
                 zoom = (key == 'zoom') ? value : getZoomHash();
                 latlng = (key == 'latlng') ? value : getLatLngHash();
                 dataset = (key == 'dataset') ? value : getDatasetHash();
+                cluster = (key == 'cluster') ? value : getClusterHash();
 
                 var newHash = '';
                 if (zoom != null) newHash = 'zoom=' + zoom;
@@ -513,6 +519,11 @@
                 if (dataset != null) {
                     if (newHash != '') newHash += '&';
                     newHash += 'dataset=' + dataset;
+                }
+
+                if (cluster != null) {
+                    if (newHash != '') newHash += '&';
+                    newHash += 'cluster=' + cluster;
                 }
 
                 location.hash = newHash;
@@ -534,6 +545,11 @@
             // Obtains the value of the dataset passed via the URL hash
             function getDatasetHash() {
                 return labGetQryStrValByKey('dataset', location.hash);
+            }
+
+            // Obtains the value of the cluster state (of point data only) passed via the URL hash
+            function getClusterHash() {
+                return labGetQryStrValByKey('cluster', location.hash);
             }
 
 
