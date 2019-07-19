@@ -66,16 +66,14 @@
                 font-size: 12px;
             }
 
+            .shareButton
+            {
+                padding-right: 9px;
+            }
+
             .shareButtonActive
             {
                 color: #fc6721;
-            }
-
-
-            /* OVERRIDDEN STYLE FROM labLeafletMap.css */
-            .toggleGadget
-            {
-                padding-left: 9px;
             }
         </style>
     </head>
@@ -591,10 +589,10 @@
             });
 
             // legend toggle button
-            labMap.shareBtn = document.createElement('div');                                                // creating the toggle button..
-            labMap.shareBtn.setAttribute('title', 'Share - copy map link to clipboard');                    // ..add the tooltip..
-            labMap.shareBtn.setAttribute('class', 'fa fa-share-alt-square toggleGadget shareButtonActive'); // ..the CSS..
-            labMap.shareBtn.addEventListener('click', function () {                                         // ..and the click event..
+            labMap.shareBtn = document.createElement('div');                                                            // creating the toggle button..
+            labMap.shareBtn.setAttribute('title', 'Share - copy map link to clipboard');                                // ..add the tooltip..
+            labMap.shareBtn.setAttribute('class', 'fa fa-share-alt-square toggleGadget shareButton shareButtonActive'); // ..the CSS..
+            labMap.shareBtn.addEventListener('click', function () {                                                     // ..and the click event..
                 try {
                     // Copy the URL to the clipboard from the text box element
                     var shareUrl = document.getElementById("shareUrl");
