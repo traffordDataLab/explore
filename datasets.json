@@ -54,8 +54,8 @@
     },
     "electric_car_charging_points": {
         "title": "Electric car charging points",
-        "about": "Electric car charging points in Trafford from OS OpenMap - Local.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/car_charging_points/trafford_car_charging_points.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/car_charging_points/trafford_car_charging_points.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/car_charging_points' target='_blank'>on GitHub</a>.",
-        "attribution": "<a href='https://www.ordnancesurvey.co.uk' target='_blank'>Ordnance Survey</a>",
+        "about": "Electric car charging points in Trafford from Open Charge Map.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/car_charging_points/trafford_car_charging_points.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/car_charging_points/trafford_car_charging_points.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/car_charging_points' target='_blank'>on GitHub</a>.",
+        "attribution": "<a href='https://openchargemap.org' target='_blank'>OpenChargeMap.org</a>",
         "url": "https://www.trafforddatalab.io/open_data/car_charging_points/trafford_car_charging_points.geojson",
         "theme": "Transport",
         "cluster": true
