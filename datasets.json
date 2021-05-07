@@ -373,7 +373,8 @@
         "attribution": "<a href='https://democracyclub.org.uk/' target='_blank'>Democracy Club</a>",
         "url": "https://www.trafforddatalab.io/open_data/elections/polling_stations/trafford_polling_stations.geojson",
         "theme": "Democracy",
-        "cluster": true
+        "cluster": true,
+        "hidden": true
     },
     "green_flags": {
         "title": "Green Flag Awards",
