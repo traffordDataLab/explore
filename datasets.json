@@ -386,7 +386,7 @@
     "green_flags": {
         "title": "Green Flag Awards",
         "about": "Locations of Green Flag Award winning parks and green spaces in Trafford.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/green_flags/trafford_green_flags.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/green_flags/trafford_green_flags.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/green_flags' target='_blank'>on GitHub</a>.",
-        "attribution": "<a href='http://www.greenflagaward.org.uk/' target='_blank'>Green Flag Award</a>",
+        "attribution": "<a href='https://www.greenflagaward.org/' target='_blank'>Green Flag Award</a>",
         "url": "https://www.trafforddatalab.io/open_data/green_flags/trafford_green_flags.geojson",
         "theme": "Environment"
     },
