@@ -381,7 +381,7 @@
         "url": "https://www.trafforddatalab.io/open_data/elections/polling_stations/trafford_polling_stations.geojson",
         "theme": "Elections",
         "cluster": true,
-        "hidden": false
+        "hidden": true
     },
     "green_flags": {
         "title": "Green Flag Awards",
