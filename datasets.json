@@ -396,5 +396,13 @@
         "attribution": "<a href='https://www.gov.uk/government/organisations/department-for-education' target='_blank'>Department for Education</a>",
         "url": "https://www.trafforddatalab.io/open_data/childrens_centres/trafford_childrens_centres.geojson",
         "theme": "Education"
+    },
+    "day_nurseries_north": {
+        "title": "Day Nurseries (North)",
+        "about": "Locations of day nurseries in the North of Trafford and their vacancy status.",
+        "url": "https://www.trafforddatalab.io/maps/explore/temp/early_years_settings_sufficiency/ey_north_day_nurseries.geojson",
+        "theme": "Education",
+        "hidden": true,
+        "legend": "<div class='legendKey' style='height: 20px; border-radius: 10px; margin-bottom: 5px; background-color: #c9521a;'></div> Has vacancies<br style='clear: both;' /><div class='legendKey' style='height: 20px; border-radius: 10px; background-color: #4c015e;'></div> No vacancies"
     }
 }
