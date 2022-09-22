@@ -829,7 +829,7 @@
             });
 
             // Add the Trafford MSOAs
-            labAjax('https://www.trafforddatalab.io/spatial_data/msoa/2011/trafford_msoa_full_resolution.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/msoa/2021/trafford_msoa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['MSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['3. MSOA'] = labMap.objGeographies['MSOA'];
@@ -837,7 +837,7 @@
             });
 
             // Add the Trafford LSOAs
-            labAjax('https://www.trafforddatalab.io/spatial_data/lsoa/2011/trafford_lsoa_full_resolution.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/lsoa/2021/trafford_lsoa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['LSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['4. LSOA'] = labMap.objGeographies['LSOA'];
@@ -845,7 +845,7 @@
             });
 
             // Add the Trafford OAs
-            labAjax('https://www.trafforddatalab.io/spatial_data/oa/2011/trafford_oa_generalised.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/oa/2021/trafford_oa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['OA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['5. OA'] = labMap.objGeographies['OA'];
