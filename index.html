@@ -790,7 +790,7 @@
             labMap.objGeographies = {};   // object to hold all the boundary L.geoJSON objects so that we can test in a loop for which layer belongs to which geography
 
             // Add the Trafford boundary
-            labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2016/trafford_local_authority_full_resolution.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2021/trafford_local_authority_full_resolution.geojson', function (data) {
                 labMap.objGeographies['LA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents }).addTo(labMap.map);
 
                 try {
@@ -821,7 +821,7 @@
             });
 
             // Add the Trafford wards
-            labAjax('https://www.trafforddatalab.io/spatial_data/ward/2017/trafford_ward_full_resolution.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/ward/2022/trafford_ward_full_resolution.geojson', function (data) {
                 labMap.objGeographies['Ward'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['2. Ward'] = labMap.objGeographies['Ward'];
@@ -853,7 +853,7 @@
             });
 
             // Add the Trafford localities
-            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/trafford_localities.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2022/trafford_localities_full_resolution.geojson', function (data) {
                 labMap.objGeographies['Localities'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['6. Localities'] = labMap.objGeographies['Localities'];
