@@ -835,12 +835,28 @@
                 labMap.overlayLayers['3. Ward (new from May 2023)'] = labMap.objGeographies['Ward2023'];
                 labMap.updateLayerControl();
             });
+            
+            // Add the current Trafford localities (correct until May 2023)
+            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2022/trafford_localities_full_resolution.geojson', function (data) {
+                labMap.objGeographies['LocalitiesCurrent'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+
+                labMap.overlayLayers['4. Localities (current until May 2023)'] = labMap.objGeographies['LocalitiesCurrent'];
+                labMap.updateLayerControl();
+            });
+            
+            // Add the new Trafford localities which will come into effect from May 2023 onwards
+            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2023/trafford_localities_full_resolution.geojson', function (data) {
+                labMap.objGeographies['Localities2023'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+
+                labMap.overlayLayers['5. Localities (new from May 2023)'] = labMap.objGeographies['Localities2023'];
+                labMap.updateLayerControl();
+            });
 
             // Add the Trafford MSOAs
             labAjax('https://www.trafforddatalab.io/spatial_data/msoa/2021/trafford_msoa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['MSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
-                labMap.overlayLayers['4. MSOA'] = labMap.objGeographies['MSOA'];
+                labMap.overlayLayers['6. MSOA'] = labMap.objGeographies['MSOA'];
                 labMap.updateLayerControl();
             });
 
@@ -848,7 +864,7 @@
             labAjax('https://www.trafforddatalab.io/spatial_data/lsoa/2021/trafford_lsoa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['LSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
-                labMap.overlayLayers['5. LSOA'] = labMap.objGeographies['LSOA'];
+                labMap.overlayLayers['7. LSOA'] = labMap.objGeographies['LSOA'];
                 labMap.updateLayerControl();
             });
 
@@ -856,22 +872,14 @@
             labAjax('https://www.trafforddatalab.io/spatial_data/oa/2021/trafford_oa_full_resolution.geojson', function (data) {
                 labMap.objGeographies['OA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
-                labMap.overlayLayers['6. OA'] = labMap.objGeographies['OA'];
-                labMap.updateLayerControl();
-            });
-
-            // Add the Trafford localities
-            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2022/trafford_localities_full_resolution.geojson', function (data) {
-                labMap.objGeographies['Localities'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
-
-                labMap.overlayLayers['7. Localities (current until May 2023)'] = labMap.objGeographies['Localities'];
+                labMap.overlayLayers['8. OA'] = labMap.objGeographies['OA'];
                 labMap.updateLayerControl();
             });
 
             // Add labels for the town centres - this is not a boundary layer so it is not added to objGeographies
             labAjax('https://www.trafforddatalab.io/spatial_data/town_centres/trafford_town_centres.geojson', function (data) {
 
-                labMap.overlayLayers['8. Town centres'] = L.geoJSON(data, {
+                labMap.overlayLayers['9. Town centres'] = L.geoJSON(data, {
                     pointToLayer: function (feature, latlng) {
                         return L.marker(latlng, { icon: L.divIcon({ iconSize: null }) }).bindTooltip(feature.properties.name, { direction: 'center', className: 'labLabels', opacity: 1, permanent: true });
                     }
