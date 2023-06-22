@@ -214,9 +214,16 @@
     },
     "leisure_centres": {
         "title": "Leisure centres",
-        "about": "Leisure centres managed by Trafford Leisure CIC Limited and associated parking facilities.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/leisure_centres' target='_blank'>on GitHub</a>.",
-        "attribution": "<a href='http://www.trafford.gov.uk' target='_blank'>Trafford Council</a> &amp; <a href='https://www.traffordleisure.co.uk' target='_blank'>Trafford Leisure CIC</a>",
-        "url": "https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres_styled.geojson",
+        "about": "Leisure centres in Trafford. Accompanying dataset showing the <a href='https://www.trafforddatalab.io/maps/explore/index.html?dataset=leisure_centres_and_parking'>leisure centre buildings and parking areas</a> is also available.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/leisure_centres' target='_blank'>on GitHub</a>.",
+        "attribution": "<a href='https://www.traffordleisure.co.uk' target='_blank'>Trafford Leisure CIC</a> &amp; <a href='https://www.beactiveurmston.org' target='_blank'>George Carnall Community Group CIC</a>",
+        "url": "https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres.geojson",
+        "theme": "Amenities"
+    },
+    "leisure_centres_and_parking": {
+        "title": "Leisure centres and parking",
+        "about": "Leisure centre buildings and associated parking facilities in Trafford. Accompanying dataset showing just the <a href='https://www.trafforddatalab.io/maps/explore/index.html?dataset=leisure_centres'>leisure centre locations as points</a> is also available.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres_and_parking.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres_and_parking_polygons.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/leisure_centres' target='_blank'>on GitHub</a>.",
+        "attribution": "<a href='http://www.trafford.gov.uk' target='_blank'>Trafford Council</a>, <a href='https://www.traffordleisure.co.uk' target='_blank'>Trafford Leisure CIC</a> &amp; <a href='https://www.beactiveurmston.org' target='_blank'>George Carnall Community Group CIC</a>",
+        "url": "https://www.trafforddatalab.io/open_data/leisure_centres/trafford_leisure_centres_and_parking_polygons_styled.geojson",
         "theme": "Amenities",
         "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 3px solid #fc6721;'></div> Leisure Centres<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #e5c494;'></div> On-site parking"
     },
