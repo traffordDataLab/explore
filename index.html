@@ -231,7 +231,11 @@
 
                 var layer = e.target;
                 var propsTable = '';
+                
+                // Find out what type of layer this is
                 var isReachability = isIsolineLayer(layer);
+                var isGeography = isGeographyLayer(layer);
+                var isDataset = isDatasetLayer(layer);
 
                 // reset the style of a previously selected feature
                 resetFeatureStyle();
@@ -250,9 +254,11 @@
                 else {
                     layer.setStyle(labMap.polySelected);
 
-                    // Does the polygon layer belong to either a dataset or boundary geography? If so we want to bring that layer to the front
-                    // It's really important that we don't do this for isolines otherwise the user couldn't select intervals
-                    if (isReachability == false) layer.bringToFront();
+                    /*
+                        Do we want to bring this layer to the front?  If it's a boundary geography definitely yes as they often have overlapping lines.  When we select one, we want the whole outline to be on top as it is highlighted in yellow, not have parts hidden under the black lines of neighbouring boundaries.  The same is true for certain datasets like the Agricultural land.  However, with reachability isolines, the user wouldn't be able to select the smaller intervals once they'd selected a larger one if the layers reordered, as the larger one would be covering the smaller layer(s).  The same is also true for certain other layered datasets like OS Greenspaces which have smaller polygons layered on top of larger ones and the ordering needs to be preserved.
+                        So, how to handle this?  Only bring the layer to the front if belongs to a geography layer, or if it belongs to a dataset and there isn't a flag in the datasets.json telling us not to.
+                    */
+                    if (isGeography || (isDataset && labMap.preventLayerToFront == false)) layer.bringToFront();
                 }
 
                 // build the content for the properties table to be displayed
@@ -340,6 +346,7 @@
                     labMap.datasetLayer = null;
                     labMap.datasetGeoJson = null;
                     labMap.datasetCluster = null;
+                    labMap.preventLayerToFront = false; // Default behaviour for dataset layers is to bring them to the front when selected. To prevent this happening the dataset needs to have a key 'preventLayerToFront' set to true in datasets.json
 
                     // ensure the cluster checkbox is hidden
                     if (L.DomUtil.hasClass(labMap.toggleClusterContainer, 'hideContent') == false) L.DomUtil.addClass(labMap.toggleClusterContainer, 'hideContent');
@@ -408,6 +415,12 @@
 
                                 // update the URL with the dataset selected
                                 updateMapStateUrl('dataset', datasetKey);
+                                
+                                /*
+                                    Check if we want to prevent the layers within the dataset being brought to the front when selected (default is false).
+                                    Some datasets like OS Greenspaces have smaller objects overlaid on larger ones, so bringing layers to the front disrupts this and causes issues for the user (e.g. smaller objects can become unselectable behind larger ones).
+                                */    
+                                if (labMap.objDatasets[datasetKey].hasOwnProperty('preventLayerToFront') && labMap.objDatasets[datasetKey].preventLayerToFront === true) labMap.preventLayerToFront = true; 
                             }
                             catch (e) {
                                 labError(new LabException("Error attempting to create GeoJSON Leaflet layer: " + e.message));
