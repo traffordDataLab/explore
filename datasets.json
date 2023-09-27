@@ -405,5 +405,21 @@
         "attribution": "<a href='https://www.gov.uk/government/organisations/department-for-education' target='_blank'>Department for Education</a>",
         "url": "https://www.trafforddatalab.io/open_data/childrens_centres/trafford_childrens_centres.geojson",
         "theme": "Education"
+    },
+    "bus_stops": {
+        "title": "Bus stops",
+        "about": "Bus stops in Trafford.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/transport/bus/stops/trafford_bus_stops.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/transport/bus/stops/trafford_bus_stops.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/transport/bus/stops' target='_blank'>on GitHub</a>.",
+        "attribution": "Contains <a href='https://www.tfgm.com' target='_blank'>Transport for Greater Manchester</a> data",
+        "url": "https://www.trafforddatalab.io/open_data/transport/bus/stops/trafford_bus_stops.geojson",
+        "theme": "Transport",
+        "cluster": true
+    },
+    "bus_routes": {
+        "title": "Bus routes",
+        "about": "Bus routes in Trafford.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/transport/bus/routes/trafford_bus_routes.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/transport/bus/routes' target='_blank'>on GitHub</a>.",
+        "attribution": "Contains <a href='https://www.tfgm.com' target='_blank'>Transport for Greater Manchester</a> data",
+        "url": "https://www.trafforddatalab.io/open_data/transport/bus/routes/trafford_bus_routes.geojson",
+        "theme": "Transport",
+        "cluster": true
     }
 }
