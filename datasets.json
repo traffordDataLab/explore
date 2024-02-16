@@ -5,7 +5,7 @@
         "attribution": "<a href='https://www.gov.uk/government/organisations/natural-england' target='_blank'>Natural England</a>",
         "url": "https://www.trafforddatalab.io/open_data/agricultural_land_classification/trafford_agricultural_land_classification_styled.geojson",
         "theme": "Environment",
-        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 3px solid #a1d99b;'></div> Grade 2<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #74c476;'></div> Grade 3<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #31a354;'></div> Grade 4<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #ae8552;'></div> Non Agricultural<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #828282;'></div> Urban"
+        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 5px solid #a1d99b;'></div> Grade 2<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #74c476;'></div> Grade 3<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #31a354;'></div> Grade 4<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #ae8552;'></div> Non Agricultural<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #828282;'></div> Urban"
     },
     "air_quality": {
         "title": "Air quality",
@@ -77,10 +77,11 @@
     },
     "flood_risk": {
         "title": "Flood risk",
-        "about": "The dataset shows the chance of flooding from rivers and/or the sea, based on 50m cells in Trafford. Each cell is allocated to one of four flood risk categories, taking into account flood defences and their condition.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/flood_risk/trafford_flood_risk.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/flood_risk' target='_blank'>on GitHub</a>.",
-        "attribution": "&copy; Environment Agency copyright and/or database right 2017. All rights reserved. Some features of this map are based on digital spatial data from the Centre for Ecology & Hydrology, &copy; NERC (CEH)&copy; Crown copyright and database rights 2017 Ordnance Survey 100024198",
-        "url": "https://www.trafforddatalab.io/open_data/flood_risk/trafford_flood_risk_styled.geojson",
-        "theme": "Environment"
+        "about": "Flood risk in Trafford. Taken from the <a href='https://www.data.gov.uk/dataset/bad20199-6d39-4aad-8564-26a46778fd94/risk-of-flooding-from-rivers-and-sea' target='_blank'>Risk of Flooding from Rivers and Sea</a> national dataset, it shows the chance of flooding based on cells of 50m. Each cell is allocated one of four flood risk categories, taking into account flood defences and their condition.<br /><br />Please refer to the <a href='https://environment.data.gov.uk/api/file/download?fileDataSetId=d1651d70-29a8-406a-8e66-cdf15a11ef23&fileName=RoFRS_Product_Description_v2_3.pdf#page=4' target='_blank'>Product Description PDF</a> for explanations of the <strong>suitable scale</strong> values and their accompanying suitable uses and reliability information.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/flood_risk/trafford_flood_risk.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/flood_risk' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; Environment Agency copyright and/or database right 2023. All rights reserved.",
+        "url": "../open_data/flood_risk/trafford_flood_risk_styled.geojson",
+        "theme": "Environment",
+        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 5px solid #3E4388;'></div> High: yearly risk greater than 1 in 30 (3.3%)<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #2171b5;'></div> Medium: yearly risk between 1 in 30 (3.3%) and 1 in 100 (1%)<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #6baed6;'></div> Low: yearly risk between 1 in 100 (1%) and 1 in 1000 (0.1%)<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #bdd7e7;'></div> Very Low: yearly risk less than 1 in 1000 (0.1%)"
     },
     "food_banks": {
         "title": "Food banks",
@@ -103,7 +104,7 @@
         "attribution": "<a href='https://www.ordnancesurvey.co.uk' target='_blank'>Ordnance Survey</a>",
         "url": "https://www.trafforddatalab.io/open_data/greenspaces/trafford_greenspace_sites_styled.geojson",
         "theme": "Environment",
-        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 4px solid #44AA99;'></div> Allotments or Community Growing Spaces<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #3DD707;'></div> Bowling Green<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #332288;'></div> Cemetery<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #CA825F;'></div> Golf Course<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #DDCC77;'></div> Other Sports Facility<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #88CCEE;'></div> Play Space<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #AA4499;'></div> Playing Field<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #117733;'></div> Public Park or Garden<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #882255;'></div> Religious Grounds<br /><div class='legendKey legendKeyLine' style='border-bottom: 4px solid #CC6677;'></div> Tennis Court",
+        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 5px solid #44AA99;'></div> Allotments or Community Growing Spaces<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #3DD707;'></div> Bowling Green<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #332288;'></div> Cemetery<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #CA825F;'></div> Golf Course<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #DDCC77;'></div> Other Sports Facility<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #88CCEE;'></div> Play Space<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #AA4499;'></div> Playing Field<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #117733;'></div> Public Park or Garden<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #882255;'></div> Religious Grounds<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #CC6677;'></div> Tennis Court",
         "preventLayerToFront": true
     },
     "hospitals": {
@@ -227,7 +228,7 @@
         "attribution": "<a href='http://www.trafford.gov.uk' target='_blank'>Trafford Council</a>, <a href='https://www.traffordleisure.co.uk' target='_blank'>Trafford Leisure CIC</a> &amp; <a href='https://www.beactiveurmston.org' target='_blank'>George Carnall Community Group CIC</a>",
         "url": "https://www.trafforddatalab.io/council_open_data/assets/leisure_centres/trafford_leisure_centres_and_parking_polygons_styled.geojson",
         "theme": "Amenities",
-        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 3px solid #fc6721;'></div> Leisure Centres<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #e5c494;'></div> On-site parking"
+        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 5px solid #fc6721;'></div> Leisure Centres<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #e5c494;'></div> On-site parking"
     },
     "sports_clubs": {
         "title": "Sports clubs",
@@ -266,7 +267,7 @@
         "attribution": "Contains <a href='https://www.tfgm.com' target='_blank'>Transport for Greater Manchester</a> data",
         "url": "https://www.trafforddatalab.io/open_data/GM_Accessibility_Levels/trafford_GMAL.geojson",
         "theme": "Transport",
-        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 3px solid #500001;'></div> Level 8. High accessibility<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #D63027;'></div> Level 7<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #FF8001;'></div> Level 6<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #FED861;'></div> Level 5<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #8FFF90;'></div> Level 4<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #50C4FF;'></div> Level 3<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #3175FF;'></div> Level 2<br /><div class='legendKey legendKeyLine' style='border-bottom: 3px solid #020060;'></div> Level 1. Low accessibility"
+        "legend": "<div class='legendKey legendKeyLine' style='border-bottom: 5px solid #500001;'></div> Level 8. High accessibility<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #D63027;'></div> Level 7<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #FF8001;'></div> Level 6<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #FED861;'></div> Level 5<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #8FFF90;'></div> Level 4<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #50C4FF;'></div> Level 3<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #3175FF;'></div> Level 2<br /><div class='legendKey legendKeyLine' style='border-bottom: 5px solid #020060;'></div> Level 1. Low accessibility"
     },
     "outdoor_tennis": {
         "title": "Tennis: Outdoor courts",
