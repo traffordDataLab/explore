@@ -884,6 +884,14 @@
 
                 labMap.updateLayerControl();
             });
+            
+            // Add the Trafford Creative Clusters
+            labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2024/trafford_creative_clusters_full_resolution.geojson', function (data) {
+                labMap.objGeographies['Creative_Clusters'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+
+                labMap.overlayLayers['8. Creative Clusters'] = labMap.objGeographies['Creative_Clusters'];
+                labMap.updateLayerControl();
+            });
         </script>
     </body>
 </html>
