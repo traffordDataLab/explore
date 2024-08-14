@@ -429,5 +429,12 @@
         "attribution": "<a href='http://www.trafford.gov.uk' target='_blank'>Trafford Council</a>",
         "url": "https://www.trafforddatalab.io/council_open_data/assets/community_hubs/trafford_community_hubs.geojson",
         "theme": "Amenities"
+    },
+    "sssi": {
+        "title": "Sites of Special Scientific Interest",
+        "about": "A Site of Special Scientific Interest (SSSI) is the land notified as an SSSI under the Wildlife and Countryside Act (1981), as amended. Sites notified under the 1949 Act only are not included in the Data set. SSSI are the finest sites for wildlife and natural features in England, supporting many characteristic, rare and endangered species, habitats and natural features. The data do not include &quot;proposed&quot; sites. Boundaries are generally mapped against Ordnance Survey MasterMap.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/sites_of_special_scientific_interest/trafford_sites_of_special_scientific_interest.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/sites_of_special_scientific_interest' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; <a href='https://www.data.gov.uk/dataset/5b632bd7-9838-4ef2-9101-ea9384421b0d/sites-of-special-scientific-interest-england' target='_blank'>Natural England</a> copyright",
+        "url": "https://www.trafforddatalab.io/open_data/sites_of_special_scientific_interest/trafford_sites_of_special_scientific_interest.geojson",
+        "theme": "Environment"
     }
 }
