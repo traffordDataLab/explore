@@ -436,5 +436,12 @@
         "attribution": "&copy; <a href='https://www.data.gov.uk/dataset/5b632bd7-9838-4ef2-9101-ea9384421b0d/sites-of-special-scientific-interest-england' target='_blank'>Natural England</a> copyright",
         "url": "https://www.trafforddatalab.io/open_data/sites_of_special_scientific_interest/trafford_sites_of_special_scientific_interest.geojson",
         "theme": "Environment"
+    },
+    "nature_reserves": {
+        "title": "Local Nature Reserves",
+        "about": "Local Nature Reserves (LNRs) are a statutory designation made under Section 21 of the National Parks and Access to the Countryside Act 1949 by principal local authorities. LNRs are for people and wildlife. They are places with wildlife or geological features that are of special interest locally. They offer people opportunities to study or learn about nature or simply to enjoy it. They are an impressive natural resource which makes an important contribution to England's biodiversity.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/local_nature_reserves/trafford_local_nature_reserves.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/local_nature_reserves' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; <a href='https://www.data.gov.uk/dataset/acdf4a9e-a115-41fb-bbe9-603c819aa7f7/local-nature-reserves-england' target='_blank'>Natural England</a> copyright",
+        "url": "https://www.trafforddatalab.io/open_data/local_nature_reserves/trafford_local_nature_reserves.geojson",
+        "theme": "Environment"
     }
 }
