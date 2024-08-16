@@ -443,5 +443,12 @@
         "attribution": "&copy; <a href='https://www.data.gov.uk/dataset/acdf4a9e-a115-41fb-bbe9-603c819aa7f7/local-nature-reserves-england' target='_blank'>Natural England</a> copyright",
         "url": "https://www.trafforddatalab.io/open_data/local_nature_reserves/trafford_local_nature_reserves.geojson",
         "theme": "Environment"
+    },
+    "scheduled_monuments": {
+        "title": "Scheduled Monuments",
+        "about": "Historic buildings and archaeological sites of national importance are given legal protection by being placed on a ‘Schedule’ of monuments. Historic England identifies and advises on these monuments, which are placed on the Schedule by the Department for Culture, Media and Sport. Examples of Scheduled Monuments are Roman remains, burial mounds, castles, bridges, earthworks, the remains of deserted villages, and industrial sites. Unlike Listed Buildings they are not assigned grades.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/scheduled_monuments/trafford_scheduled_monuments.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/scheduled_monuments' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; Historic England 2024. The <a href='https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/about?layer=6' target='_blank'>Historic England Data</a> contained in this material was obtained on 16-08-2024. The most publicly available up to date Historic England Data can be obtained from <a href='https://historicengland.org.uk' target='_blank'>HistoricEngland.org.uk</a>",
+        "url": "https://www.trafforddatalab.io/open_data/scheduled_monuments/trafford_scheduled_monuments.geojson",
+        "theme": "Historical Interest"
     }
 }
