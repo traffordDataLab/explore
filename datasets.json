@@ -450,5 +450,12 @@
         "attribution": "&copy; Historic England 2024. The <a href='https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::national-heritage-list-for-england-nhle/about?layer=6' target='_blank'>Historic England Data</a> contained in this material was obtained on 16-08-2024. The most publicly available up to date Historic England Data can be obtained from <a href='https://historicengland.org.uk' target='_blank'>HistoricEngland.org.uk</a>",
         "url": "https://www.trafforddatalab.io/open_data/scheduled_monuments/trafford_scheduled_monuments.geojson",
         "theme": "Historical Interest"
+    },
+    "conservation_areas": {
+        "title": "Conservation Areas",
+        "about": "Conservation Areas in Trafford as designated by the Local Planning Authority and compiled by Historic England. Conservation areas exist to manage and protect the special architectural and historic interest of a place - in other words, the features that make it unique. In conservation areas there are some extra planning controls and considerations in place to protect the historic and architectural elements which make the place special.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/conservation_areas/trafford_conservation_areas.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/conservation_areas/trafford_conservation_areas.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/conservation_areas' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; Historic England 2024. The <a href='https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::conservation-areas/about' target='_blank'>Historic England Data</a> contained in this material was obtained on 16-08-2024. The most publicly available up to date Historic England Data can be obtained from <a href='https://historicengland.org.uk' target='_blank'>HistoricEngland.org.uk</a>",
+        "url": "https://www.trafforddatalab.io/open_data/conservation_areas/trafford_conservation_areas.geojson",
+        "theme": "Historical Interest"
     }
 }
