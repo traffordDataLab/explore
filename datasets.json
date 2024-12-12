@@ -16,7 +16,7 @@
     },
     "buildings": {
         "title": "Buildings",
-        "about": "Buildings in Trafford derived from Ordnance Survey\"s OpenMap - Local.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/buildings/trafford_buildings.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/buildings' target='_blank'>on GitHub</a>.",
+        "about": "Buildings in Trafford derived from Ordnance Survey's OpenMap - Local.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/buildings/trafford_buildings.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/buildings' target='_blank'>on GitHub</a>.",
         "attribution": "<a href='https://www.ordnancesurvey.co.uk' target='_blank'>Ordnance Survey</a>",
         "url": "https://www.trafforddatalab.io/open_data/buildings/trafford_buildings.geojson",
         "theme": "Housing"
@@ -457,5 +457,14 @@
         "attribution": "&copy; Historic England 2024. The <a href='https://opendata-historicengland.hub.arcgis.com/datasets/historicengland::conservation-areas/about' target='_blank'>Historic England Data</a> contained in this material was obtained on 16-08-2024. The most publicly available up to date Historic England Data can be obtained from <a href='https://historicengland.org.uk' target='_blank'>HistoricEngland.org.uk</a>",
         "url": "https://www.trafforddatalab.io/open_data/conservation_areas/trafford_conservation_areas.geojson",
         "theme": "Historical Interest"
+    },
+    "uprn": {
+        "title": "Unique Property Reference Numbers",
+        "about": "An open dataset containing all the Unique Property Reference Numbers (UPRNs) found in AddressBase Premium, with their respective geometries in British National Grid and Latitude, Longitude. Derived from Ordnance Survey's OS Open UPRN.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/unique_property_reference_numbers/trafford_unique_property_reference_numbers.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/unique_property_reference_numbers/trafford_unique_property_reference_numbers.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/unique_property_reference_numbers' target='_blank'>on GitHub</a>.",
+        "attribution": "<a href='https://osdatahub.os.uk/downloads/open/OpenUPRN' target='_blank'>OS Open UPRN</a> provided by <a href='https://www.ordnancesurvey.co.uk/' target='_blank'>Ordnance Survey</a>",
+        "url": "https://www.trafforddatalab.io/open_data/unique_property_reference_numbers/trafford_unique_property_reference_numbers.geojson",
+        "theme": "Identifiers and Referencing",
+        "cluster": true,
+        "preventUncluster": true
     }
 }
