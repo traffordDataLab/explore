@@ -338,7 +338,9 @@
             }
 
             // for loading data as an overlay layer
-            function loadDatasetLayer(datasetKey) {
+            function loadDatasetLayer(datasetKey, resetClusterQS) {
+                if (resetClusterQS) updateMapStateUrl('cluster', null); // remove the cluster key from the URL hash if desired - e.g. when loading the dataset from the select list we want the decision as to whether point data is clustered or not by default to be made based on the cluster flag value in datasets.json, not from the QS
+                
                 // Remove any current data layer and reset the variables
                 if (labMap.datasetLayer !== null) {
                     labMap.datasetLayer.removeFrom(labMap.map);
@@ -390,7 +392,7 @@
                                     if (labMap.objDatasets[datasetKey].attribution !== null) labMap.attribution.addAttribution('Data source: ' + labMap.objDatasets[datasetKey].attribution);
 
                                     // do we want clustering on or off?
-                                    // order of precedence: 1. cluster and preventUncluster flags in datasets.json are both TRUE, 2. cluster QS value is TRUE, 3. cluster flag in datasets.json is TRUE
+                                    // order of precedence: 1. cluster and preventUncluster flags in datasets.json are both TRUE, 2. cluster QS value is TRUE (if loading the dataset via URL, not the select list), 3. cluster flag in datasets.json is TRUE
                                     // preventUncluster flag is for datasets containing huge numbers of points that would crash the browser, this disables the cluster checkbox to prevent the user unclustering
                                     var clusterFlagSet = (labMap.objDatasets[datasetKey].hasOwnProperty('cluster') && labMap.objDatasets[datasetKey].cluster === true) ? true : false;
                                     var preventUnclusterFlagSet = (labMap.objDatasets[datasetKey].hasOwnProperty('preventUncluster') && labMap.objDatasets[datasetKey].preventUncluster === true) ? true : false;
@@ -781,7 +783,7 @@
                 var datasetQS = getDatasetHash();
 
                 // Create the select element to choose the labMap.objDatasets
-                var datasetSelect = '<select name="frmDatasetList" onChange="loadDatasetLayer(this.value)" class="datasetSelect"><option value="" selected="selected">Select a dataset to visualise...</option>';
+                var datasetSelect = '<select name="frmDatasetList" onChange="loadDatasetLayer(this.value, true)" class="datasetSelect"><option value="" selected="selected">Select a dataset to visualise...</option>';
 
                 var optGroupTheme = '';     // ensure we create new optgroup tags based on the themes
 
@@ -809,7 +811,7 @@
                 labMap.toggleClusterContainer = document.getElementById('toggleClusteringContainer');
 
                 // If a dataset has been specified via the QueryString, attempt to load it
-                if (datasetQS !== null) loadDatasetLayer(datasetQS);
+                if (datasetQS !== null) loadDatasetLayer(datasetQS, false);
             });
 
 
