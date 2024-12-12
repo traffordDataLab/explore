@@ -398,19 +398,19 @@
 
                                     if ((clusterFlagSet && preventUnclusterFlagSet) || clusterQS === 'true' || (clusterQS !== 'false' && clusterFlagSet)) {
                                         labMap.datasetLayer = labMap.datasetCluster;    // the layer we are going to add to the map is the clustered version
-                                        document.getElementById('toggleClustering').checked = true;
+                                        labMap.toggleCluster.checked = true;
                                     }
                                     else {
                                         labMap.datasetLayer = labMap.datasetGeoJson;    // the layer we are going to add to the map is the straight GeoJSON we loaded
-                                        document.getElementById('toggleClustering').checked = false;
+                                        labMap.toggleCluster.checked = false;
                                     }
                                     
                                     // now determine if we need to prevent the user from unclustering the dataset
                                     if (clusterFlagSet && preventUnclusterFlagSet) {
-                                        document.getElementById('toggleClustering').setAttribute("disabled", "disabled");
+                                        labMap.toggleCluster.setAttribute("disabled", "disabled");
                                     }
                                     else {
-                                        document.getElementById('toggleClustering').removeAttribute("disabled");
+                                        labMap.toggleCluster.removeAttribute("disabled");
                                     }
 
                                     L.DomUtil.removeClass(labMap.toggleClusterContainer, 'hideContent');    // show the clustering checkbox
@@ -804,7 +804,8 @@
                 // Add the dataset chooser UI to the filter container along with the element to toggle point data clustering
                 labMap.updateFilterGUI(datasetSelect + '<div id="toggleClusteringContainer" class="hideContent"><input type="checkbox" id="toggleClustering" onClick="toggleClustering()"/><label for="toggleClustering" class="toggleCluster">cluster markers</label></div>');
 
-                // Store a reference to the container for the point data clustering control so that we can show/hide by adding or removing a CSS class
+                // Store a reference to the checkbox and container for the point data clustering control so that we can show/hide by adding or removing a CSS class, check/uncheck it etc.
+                labMap.toggleCluster = document.getElementById('toggleClustering');
                 labMap.toggleClusterContainer = document.getElementById('toggleClusteringContainer');
 
                 // If a dataset has been specified via the QueryString, attempt to load it
