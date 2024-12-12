@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/MarkerCluster.TraffordDataLab.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%7CRoboto"/>
         <link rel="stylesheet" href="https://www.trafforddatalab.io/css/labBase.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labLeafletMap.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/leaflet.reachability@v2.0.1/leaflet.reachability.min.css"/>
@@ -389,15 +390,27 @@
                                     if (labMap.objDatasets[datasetKey].attribution !== null) labMap.attribution.addAttribution('Data source: ' + labMap.objDatasets[datasetKey].attribution);
 
                                     // do we want clustering on or off?
-                                    var clusterQS = labGetQryStrValByKey('cluster', location.hash);
+                                    // order of precedence: 1. cluster and preventUncluster flags in datasets.json are both TRUE, 2. cluster QS value is TRUE, 3. cluster flag in datasets.json is TRUE
+                                    // preventUncluster flag is for datasets containing huge numbers of points that would crash the browser, this disables the cluster checkbox to prevent the user unclustering
+                                    var clusterFlagSet = (labMap.objDatasets[datasetKey].hasOwnProperty('cluster') && labMap.objDatasets[datasetKey].cluster === true) ? true : false;
+                                    var preventUnclusterFlagSet = (labMap.objDatasets[datasetKey].hasOwnProperty('preventUncluster') && labMap.objDatasets[datasetKey].preventUncluster === true) ? true : false;
+                                    var clusterQS = labGetQryStrValByKey('cluster', location.hash); // check if we're trying to set clustering via the querystring
 
-                                    if (clusterQS === 'true' || (clusterQS !== 'false' && labMap.objDatasets[datasetKey].hasOwnProperty('cluster') && labMap.objDatasets[datasetKey].cluster === true)) {
+                                    if ((clusterFlagSet && preventUnclusterFlagSet) || clusterQS === 'true' || (clusterQS !== 'false' && clusterFlagSet)) {
                                         labMap.datasetLayer = labMap.datasetCluster;    // the layer we are going to add to the map is the clustered version
                                         document.getElementById('toggleClustering').checked = true;
                                     }
                                     else {
                                         labMap.datasetLayer = labMap.datasetGeoJson;    // the layer we are going to add to the map is the straight GeoJSON we loaded
                                         document.getElementById('toggleClustering').checked = false;
+                                    }
+                                    
+                                    // now determine if we need to prevent the user from unclustering the dataset
+                                    if (clusterFlagSet && preventUnclusterFlagSet) {
+                                        document.getElementById('toggleClustering').setAttribute("disabled", "disabled");
+                                    }
+                                    else {
+                                        document.getElementById('toggleClustering').removeAttribute("disabled");
                                     }
 
                                     L.DomUtil.removeClass(labMap.toggleClusterContainer, 'hideContent');    // show the clustering checkbox
