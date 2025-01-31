@@ -467,5 +467,12 @@
         "theme": "Property",
         "cluster": true,
         "preventUncluster": true
+    },
+    "water_level_monitoring": {
+        "title": "Water level monitoring stations",
+        "about": "Location and related information of river/water level monitoring stations in Trafford and the surrounding areas, including typical water level range, and historic low/high levels where available. A link is provided within the information for each station to view the latest available water level readings.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/water_level_monitoring/water_level_monitoring_stations_trafford_and_environs.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/water_level_monitoring/water_level_monitoring_stations_trafford_and_environs.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/water_level_monitoring' target='_blank'>on GitHub</a>.",
+        "attribution": "&copy; Environment Agency copyright and/or database right 2025. All rights reserved.",
+        "url": "https://www.trafforddatalab.io/open_data/water_level_monitoring/water_level_monitoring_stations_trafford_and_environs.geojson",
+        "theme": "Environment"
     }
 }
