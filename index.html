@@ -819,7 +819,7 @@
             labMap.objGeographies = {};   // object to hold all the boundary L.geoJSON objects so that we can test in a loop for which layer belongs to which geography
 
             // Add the Trafford boundary
-            labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2021/trafford_local_authority_full_resolution.geojson', function (data) {
+            labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2023/trafford_local_authority_full_resolution.geojson', function (data) {
                 labMap.objGeographies['LA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents }).addTo(labMap.map);
 
                 try {
