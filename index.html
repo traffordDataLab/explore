@@ -603,7 +603,8 @@
             // Set up the basic map environment
             var labMap = new LabLeafletMap({
                 title: 'Explore',
-                about: 'Discover the different geographies within Trafford by choosing a layer and then selecting an area.',
+                about: 'Discover the different geographies within Trafford by choosing a layer <img src="https://unpkg.com/leaflet@1.9.4/dist/images/layers-2x.png" alt="Layers menu icon" style="width: 20px; vertical-align: bottom;"/> and then selecting an area. Visualise datasets from the following selection.',
+                aboutToggle: 1, // Expand the panel by default as I think people are missing the content within, i.e. the downloads
                 baseLayers: {}, // Override the default baselayers in LabMap so that we can use OS Zoomstack vector layers if possible
                 attributes: {   // Override the default attributes in LabMap so that we can specify the maxBounds - the OS Zoomstack vector layers only cover Great Britain
                     center: [53.4189, -2.33],
