@@ -474,5 +474,14 @@
         "attribution": "&copy; Environment Agency copyright and/or database right 2025. All rights reserved.",
         "url": "https://www.trafforddatalab.io/open_data/water_level_monitoring/water_level_monitoring_stations_trafford_and_environs.geojson",
         "theme": "Environment"
+    },
+    "sports_facilities": {
+        "title": "All sports facilities",
+        "about": "Locations and details of sports facilities in Trafford from the <a href='https://www.sportengland.org' target='_blank'>Sport England</a> national sports facility database <a href='https://www.activeplacespower.com/pages/about' target='_blank'>Active Places</a>. This is a combination dataset of the separate sports facility types found in the <strong>Amenities</strong> section, but with less specific details on the individual facilities available.<br /><br />Download: <a href='https://www.trafforddatalab.io/open_data/sport_facilities/sports_facilities.csv' target='_blank'>CSV</a> | <a href='https://www.trafforddatalab.io/open_data/sport_facilities/sports_facilities.geojson' target='_blank'>GeoJSON</a>.<br />Further resources available <a href='https://github.com/traffordDataLab/open_data/tree/master/sport_facilities' target='_blank'>on GitHub</a>.",
+        "attribution": "<a href='https://www.sportengland.org' target='_blank'>Contains Data &copy; Sport England</a>",
+        "url": "https://www.trafforddatalab.io/open_data/sport_facilities/sports_facilities.geojson",
+        "theme": "Amenities",
+        "cluster": true,
+        "preventUncluster": true
     }
 }
