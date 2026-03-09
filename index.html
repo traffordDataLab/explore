@@ -889,24 +889,12 @@
                 labMap.overlayLayers['6. OA'] = labMap.objGeographies['OA'];
                 labMap.updateLayerControl();
             });
-
-            // Add labels for the town centres - this is not a boundary layer so it is not added to objGeographies
-            labAjax('https://www.trafforddatalab.io/spatial_data/town_centres/trafford_town_centres.geojson', function (data) {
-
-                labMap.overlayLayers['7. Town centres'] = L.geoJSON(data, {
-                    pointToLayer: function (feature, latlng) {
-                        return L.marker(latlng, { icon: L.divIcon({ iconSize: null }) }).bindTooltip(feature.properties.name, { direction: 'center', className: 'labLabels', opacity: 1, permanent: true });
-                    }
-                });
-
-                labMap.updateLayerControl();
-            });
             
             // Add the Trafford Creative Clusters
             labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2026/trafford_creative_clusters_full_resolution.geojson', function (data) {
                 labMap.objGeographies['Creative_Clusters'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
 
-                labMap.overlayLayers['8. Creative Clusters'] = labMap.objGeographies['Creative_Clusters'];
+                labMap.overlayLayers['7. Creative Clusters'] = labMap.objGeographies['Creative_Clusters'];
                 labMap.updateLayerControl();
             });
         </script>
