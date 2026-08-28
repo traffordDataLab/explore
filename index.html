@@ -9,14 +9,14 @@
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/MarkerCluster.TraffordDataLab.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/MarkerCluster.TraffordDataLab.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%7CRoboto"/>
         <link rel="stylesheet" href="https://www.trafforddatalab.io/css/labBase.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labLeafletMap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/labLeafletMap.min.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/leaflet.reachability@v2.0.2/leaflet.reachability.min.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/leaflet.reachability_lab.min.css"/>
-        <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/leaflet.reachability_lab.min.css"/>
+        <!--link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css"/-->
 
         <style>
             .aboutContainer
@@ -87,19 +87,19 @@
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
         <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.62.0/dist/L.Control.Locate.min.js"></script>
         <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
-        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/mapbox-gl-leaflet@error_handler/leaflet-mapbox-gl.min.js"></script>
+        <!--script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js"></script-->
+        <!--script src="https://cdn.jsdelivr.net/gh/trafforddatalab/mapbox-gl-leaflet@error_handler/leaflet-mapbox-gl.min.js"></script-->
         <script src="https://www.trafforddatalab.io/assets/javascript/labError.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/labAjax.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/labGetQryStrValByKey.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/labSpinner.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/changeLuminosity.js"></script>
         <script src="https://www.trafforddatalab.io/assets/javascript/supportWebGL.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labMarkerSVG.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labCreateTileLayer.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labCreateVectorTileLayer.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/labLeafletMap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.1.1/leaflet.reachability_lab_setup.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/labMarkerSVG.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/labCreateTileLayer.min.js"></script>
+        <!--script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/labCreateVectorTileLayer.min.js"></script-->
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/labLeafletMap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/lab_leaflet@v1.2.1/leaflet.reachability_lab_setup.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/trafforddatalab/leaflet.reachability@v2.0.2/leaflet.reachability.min.js"></script>
 
         <script>
@@ -517,7 +517,8 @@
                 From there the error function specified in the options parameter of the L.mapboxGL object is called.
                 At this point the layer has already been created and added to the map, hence why in the functions below the layer is first removed from the map and destroyed before the alternative is created.
                 This is due to the difference in the way vector tiles and raster tiles are instantiated.
-            */
+            
+                *** BELOW COMMENTED OUT AS WE'RE CURRENTLY NOT USING THE VECTOR TILE LAYERS ***
             function vectorTileErrorZoomstackLight(e) {
                 labMap.baseLayers.Light.removeFrom(labMap.map);
                 labMap.baseLayers.Light = labCreateTileLayer('CartoDB.Positron');
@@ -538,6 +539,7 @@
                 labMap.baseLayers.Road.addTo(labMap.map);
                 labMap.updateLayerControl();
             }
+            */
 
             // Updates the hash component of the URL with dataset, zoom and latlng coordinates key/value pairs in order to allow users to share the current state of the map
             function updateMapStateUrl(key, value) {
@@ -638,11 +640,12 @@
             });
             labMap.titleContainer.appendChild(labMap.shareBtn);
 
-            if (supportWebGL()) {
+            // *** BELOW COMMENTED OUT AS WE'RE CURRENTLY NOT USING THE VECTOR TILE LAYERS ***
+            //if (supportWebGL()) {
                 /*
                     Attempt to create vector tile base layers.
                     If an error occurs we fallback to using raster tile layers (and they have built in fallback in case the tile URL can't be loaded).
-                */
+                
                 labMap.baseLayers = {
                     'Light': labCreateVectorTileLayer('OSZoomstack.Light'),
                     'Outdoor': labCreateVectorTileLayer('OSZoomstack.Outdoor'),
@@ -652,13 +655,15 @@
             }
             else {
                 // Fallback to use raster tile layers instead of vector.
+                */
+                
                 labMap.baseLayers = {
-                    'Light': labCreateTileLayer('CartoDB.Positron'),
+                    'Light': labCreateTileLayer('Esri.WorldTopoMap'),
                     'Outdoor': labCreateTileLayer('OpenStreetMap.Hot'),
                     'Road': labCreateTileLayer('OpenStreetMap.Mapnik'),
                     'White': labCreateTileLayer(null)
                 }
-            }
+            //}
 
             labMap.updateLayerControl();                // update the layer control with the raster tile layers
             labMap.baseLayers.Light.addTo(labMap.map);  // choose the initial base/tile layer for the map
