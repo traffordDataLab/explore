@@ -218,8 +218,13 @@
                         labMap.reachabilityControl.isolinesGroup.resetStyle(layer);
                     }
                     else {
-                        // The feature is a polygon from a geography boundary. Easier to just set the style back to the default than resetting it via the L.geoJSON method
-                        layer.setStyle(labMap.poly);
+                        // The feature is a polygon from a geography boundary. Find the parent geography and then reset it.
+                        for (key in labMap.objGeographies) {
+                            if (labMap.objGeographies[key].hasLayer(layer)) {
+                                labMap.objGeographies[key].resetStyle(layer);
+                                break;
+                            }
+                        }
                     }
 
                     labMap.featureCache = null; // clear the cache to prevent a situation where no feature is currently selected but the cache still contains the previously selected layer
@@ -683,14 +688,7 @@
             labMap.datasetLayer = null;         // either a copy of labMap.datasetGeoJson or labMap.datasetCluster containing labMap.datasetGeoJson layers - depends on whether we are clustering point data or not
             labMap.featureCache = null;         // for caching the currently selected feature
 
-            // Polygon feature styling
-            labMap.poly = {
-                color: '#fc6721',
-                weight: 3,
-                fillOpacity: 0
-            };
-
-            // Selected polygon styling
+            // Selected polygon styling (NOTE: the unselected state styling for geography layers is now done in the labAjax code to load them as the line thicknesses now vary)
             labMap.polySelected = {
                 color: '#ffea00',
                 weight: 5,
@@ -826,7 +824,13 @@
 
             // Add the Trafford boundary
             labAjax('https://www.trafforddatalab.io/spatial_data/local_authority/2023/trafford_local_authority_full_resolution.geojson', function (data) {
-                labMap.objGeographies['LA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents }).addTo(labMap.map);
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '4'
+                }
+                
+                labMap.objGeographies['LA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents }).addTo(labMap.map);
 
                 try {
                     // We need to see if we have a zoom and latlng provided in the URL - if so we need to go to that point on the map, otherwise fit to the boundary of Trafford
@@ -857,7 +861,13 @@
             
             // Add Trafford wards (which came into effect from 2023-05-04)
             labAjax('https://www.trafforddatalab.io/spatial_data/ward/2023/trafford_ward_full_resolution.geojson', function (data) {
-                labMap.objGeographies['Ward'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '3'
+                }
+                
+                labMap.objGeographies['Ward'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['2. Wards'] = labMap.objGeographies['Ward'];
                 labMap.updateLayerControl();
@@ -865,7 +875,13 @@
             
             // Add Trafford localities (which came into effect from 2023-05-04)
             labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2023/trafford_localities_full_resolution.geojson', function (data) {
-                labMap.objGeographies['Localities'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '4'
+                }
+                
+                labMap.objGeographies['Localities'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['3. Localities'] = labMap.objGeographies['Localities'];
                 labMap.updateLayerControl();
@@ -873,7 +889,13 @@
 
             // Add the Trafford MSOAs
             labAjax('https://www.trafforddatalab.io/spatial_data/msoa/2021/trafford_msoa_full_resolution.geojson', function (data) {
-                labMap.objGeographies['MSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '3'
+                }
+                
+                labMap.objGeographies['MSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['4. MSOA'] = labMap.objGeographies['MSOA'];
                 labMap.updateLayerControl();
@@ -881,7 +903,13 @@
 
             // Add the Trafford LSOAs
             labAjax('https://www.trafforddatalab.io/spatial_data/lsoa/2021/trafford_lsoa_full_resolution.geojson', function (data) {
-                labMap.objGeographies['LSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '2'
+                }
+                
+                labMap.objGeographies['LSOA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['5. LSOA'] = labMap.objGeographies['LSOA'];
                 labMap.updateLayerControl();
@@ -889,7 +917,13 @@
 
             // Add the Trafford OAs
             labAjax('https://www.trafforddatalab.io/spatial_data/oa/2021/trafford_oa_full_resolution.geojson', function (data) {
-                labMap.objGeographies['OA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '2'
+                }
+                
+                labMap.objGeographies['OA'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['6. OA'] = labMap.objGeographies['OA'];
                 labMap.updateLayerControl();
@@ -897,7 +931,13 @@
             
             // Add the Trafford Creative Clusters
             labAjax('https://www.trafforddatalab.io/spatial_data/council_defined/2026/trafford_creative_clusters_full_resolution.geojson', function (data) {
-                labMap.objGeographies['Creative_Clusters'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: labMap.poly, onEachFeature: featureEvents });
+                var stylePoly = {
+                    'color': '#fc6721',
+                    'fillOpacity': 0,
+                    'weight': '4'
+                }
+                
+                labMap.objGeographies['Creative_Clusters'] = L.geoJSON(data, { attribution: labMap.attributionOS, style: stylePoly, onEachFeature: featureEvents });
 
                 labMap.overlayLayers['7. Creative Clusters'] = labMap.objGeographies['Creative_Clusters'];
                 labMap.updateLayerControl();
