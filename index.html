@@ -658,15 +658,15 @@
                 */
                 
                 labMap.baseLayers = {
-                    'Light': labCreateTileLayer('Esri.WorldTopoMap'),
-                    'Outdoor': labCreateTileLayer('OpenStreetMap.Hot'),
-                    'Road': labCreateTileLayer('OpenStreetMap.Mapnik'),
-                    'White': labCreateTileLayer(null)
+                    'Aerial': labCreateTileLayer('Esri.WorldImagery'),
+                    'High detail': labCreateTileLayer('OpenStreetMap.Mapnik'),
+                    'Low detail': labCreateTileLayer('Esri.WorldTopoMap'),
+                    'None': labCreateTileLayer(null)
                 }
             //}
 
             labMap.updateLayerControl();                // update the layer control with the raster tile layers
-            labMap.baseLayers.Light.addTo(labMap.map);  // choose the initial base/tile layer for the map
+            labMap.baseLayers['Low detail'].addTo(labMap.map);  // choose the initial base/tile layer for the map
 
             // Add the isochrones plugin
             labMap.reachabilityControl = labSetupReachabilityPlugin({
@@ -685,8 +685,8 @@
 
             // Polygon feature styling
             labMap.poly = {
-                color: '#212121',
-                weight: 2,
+                color: '#046dc3',
+                weight: 3,
                 fillOpacity: 0
             };
 
